@@ -22,4 +22,12 @@ Natural Earth note, ALSO 21) → DATE CHECK + sources.
 
 `main.ts` (Node 22, standard library only) copies `entry.png` to
 `/output/entry.png` (or `$MAKEFUN_OUTPUT_DIR` outside the grader container).
-The image is verified first: PNG or JPEG magic bytes, at most 1 MiB.
+The image is verified first: PNG or JPEG magic bytes, at most 1 MiB, and a
+JPEG must end with its end-of-image marker (0xFF 0xD9).
+
+## Verification
+
+- `entry.png` sha256:
+  `cfc4872de7a3bed8bcae767d5fc166af6d9d9fd2048efb49f7a882fe73dbcfe1`
+- `main.ts` run twice to two different output dirs: both outputs byte-identical
+  to `entry.png` (same sha256).
